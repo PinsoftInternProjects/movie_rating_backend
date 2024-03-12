@@ -28,4 +28,16 @@ public class UserService {
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
+
+    public void activateUser(Long id) {
+        User user = userRepository.findById(id).get();
+        user.setAccount_active(true);
+        userRepository.save(user);
+    }
+
+    public void deactivateUser(Long id) {
+        User user = userRepository.findById(id).get();
+        user.setAccount_active(false);
+        userRepository.save(user);
+    }
 }

@@ -59,9 +59,30 @@ public class UserController {
     }
 
     @DeleteMapping("/users/delete/{id}")
-    @PermitAll
     public ResponseEntity<String> deleteUserById(@PathVariable Long id){
         userService.deleteUserById(id);
         return ResponseEntity.ok("User deleted successfully");
+    }
+
+    @PostMapping("/users/activate/{id}")
+    public ResponseEntity<String> activateUser(@PathVariable Long id) {
+        Optional<User> userOptional = userService.getUserById(id);
+        if (userOptional.isPresent()){
+            userService.activateUser(id);
+            return ResponseEntity.ok("User activated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+    }
+
+    @PostMapping("/users/deactivate/{id}")
+    public ResponseEntity<String> deactivateUser(@PathVariable Long id) {
+        Optional<User> userOptional = userService.getUserById(id);
+        if (userOptional.isPresent()) {
+            userService.deactivateUser(id);
+            return ResponseEntity.ok("User deactivated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
     }
 }

@@ -14,7 +14,7 @@
         <addAutoIncrement tableName="role-table" columnName="id" columnDataType="bigint" startWith="100"
                           incrementBy="1"/>
     </changeSet>
-    <changeSet id="20240311-user-table" author="murat">
+    <changeSet id="20240312--user-table" author="murat">
         <createTable tableName="user-table">
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true"  primaryKeyName="user_id_pk" />

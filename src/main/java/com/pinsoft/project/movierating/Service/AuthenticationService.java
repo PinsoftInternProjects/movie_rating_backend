@@ -25,15 +25,16 @@ public class AuthenticationService {
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
+        user.setAccount_active(true);
+        user.setBase64image(request.getBase64image());
         Role role = roleRepository.findByName("user").get(0);
         user.setRole(role);
         User savedUser = userRepository.save(user);
         var jwtToken = jwtService.generateToken(savedUser);
 
-        // Return AuthenticationResponse with both token and userId
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .id(savedUser.getId()) // Assuming getId() returns the user ID
+                .id(savedUser.getId())
                 .build();
     }
 
@@ -48,10 +49,9 @@ public class AuthenticationService {
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
 
-        // Return AuthenticationResponse with both token and userId
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .id(user.getId()) // Assuming getId() returns the user ID
+                .id(user.getId())
                 .build();
     }
 }
