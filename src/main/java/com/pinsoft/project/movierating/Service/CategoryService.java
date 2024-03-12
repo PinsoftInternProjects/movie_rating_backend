@@ -1,5 +1,6 @@
 package com.pinsoft.project.movierating.Service;
 
+import com.pinsoft.project.movierating.DTO.CategoryDto;
 import com.pinsoft.project.movierating.Entity.Category;
 import com.pinsoft.project.movierating.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,10 @@ public class CategoryService {
     public Optional<Category> getCategoryById(Long id) {
         return categoryRepository.findById(id);
     }
-    public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
-    }
-    public void deleteCategoryById(Long id) {
-        categoryRepository.deleteById(id);
+    public  void addCategory(CategoryDto categoryDto){
+        Category category = new Category();
+        category.setName(categoryDto.getName());
+        categoryRepository.save(category);
     }
 }
 

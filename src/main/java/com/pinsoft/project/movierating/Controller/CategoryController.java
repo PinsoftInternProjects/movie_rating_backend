@@ -1,5 +1,6 @@
 package com.pinsoft.project.movierating.Controller;
 
+import com.pinsoft.project.movierating.DTO.CategoryDto;
 import com.pinsoft.project.movierating.Entity.Category;
 import com.pinsoft.project.movierating.Service.CategoryService;
 import jakarta.annotation.security.PermitAll;
@@ -34,4 +35,7 @@ public class CategoryController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/categories")
+    public void addCategory(@RequestBody CategoryDto categoryDto){categoryService.addCategory(categoryDto);}
 }
