@@ -52,4 +52,47 @@
             <column name="name" value="user" />
         </insert>
     </changeSet>
+    <changeSet id="20240311-category-insert"  author="umut" >
+        <insert tableName="category-table">
+            <column name="id" value="1" />
+            <column name="name" value="aksiyon"/>
+        </insert>
+    </changeSet>    <changeSet id="20240312-category-table" author="umut">
+        <createTable tableName="category-table">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"  primaryKeyName="category_id_pk" />
+            </column>
+            <column name="name" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="role-table" columnName="id" columnDataType="bigint" startWith="100"
+                          incrementBy="1"/>
+    </changeSet>
+    <changeSet id="20240312-movie-table" author="umut">
+        <createTable tableName="movie-table">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"  primaryKeyName="movie_id_pk" />
+            </column>
+            <column name="name" type="VARCHAR(250)">
+            </column>
+            <column name="release_date" type="BIGINT">
+            </column>
+            <column name="explanation" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="base64image" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="category_id" type="BIGINT">
+            </column>
+            <column name="language" type="VARCHAR(250)" > </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="movie-table"
+                                 constraintName="movie_category_fk"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category-table" />
+        <addAutoIncrement tableName="movie-table" columnName="id" columnDataType="bigint" startWith="100"
+                          incrementBy="1"/>    </changeSet>
 </databaseChangeLog>
