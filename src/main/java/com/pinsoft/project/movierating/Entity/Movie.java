@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Entity
+@Table(name = "movie-table", schema = "public")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
