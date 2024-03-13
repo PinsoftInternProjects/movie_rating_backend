@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.pinsoft.project.movierating.MovieRatingApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.53 s -- in com.pinsoft.project.movierating.MovieRatingApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.365 s -- in com.pinsoft.project.movierating.MovieRatingApplicationTests

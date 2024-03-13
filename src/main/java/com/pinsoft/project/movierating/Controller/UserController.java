@@ -3,6 +3,7 @@ package com.pinsoft.project.movierating.Controller;
 import com.pinsoft.project.movierating.DTO.AuthenticationRequest;
 import com.pinsoft.project.movierating.DTO.AuthenticationResponse;
 import com.pinsoft.project.movierating.DTO.RegisterRequest;
+import com.pinsoft.project.movierating.DTO.StatusRequest;
 import com.pinsoft.project.movierating.Entity.User;
 import com.pinsoft.project.movierating.Service.AuthenticationService;
 import com.pinsoft.project.movierating.Service.UserService;
@@ -64,23 +65,22 @@ public class UserController {
         return ResponseEntity.ok("User deleted successfully");
     }
 
-    @PostMapping("/users/activate/{id}")
-    public ResponseEntity<String> activateUser(@PathVariable Long id) {
-        Optional<User> userOptional = userService.getUserById(id);
-        if (userOptional.isPresent()){
-            userService.activateUser(id);
-            return ResponseEntity.ok("User activated successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-        }
-    }
-
-    @PostMapping("/users/deactivate/{id}")
-    public ResponseEntity<String> deactivateUser(@PathVariable Long id) {
+    @PutMapping("/users/status/{id}")
+    public ResponseEntity<String> updateUserStatus(
+            @PathVariable Long id, @RequestBody StatusRequest statusRequest) {
         Optional<User> userOptional = userService.getUserById(id);
         if (userOptional.isPresent()) {
-            userService.deactivateUser(id);
-            return ResponseEntity.ok("User deactivated successfully");
+            String action = statusRequest.getAction();
+            switch (action) {
+                case "activate":
+                    userService.activateUser(id);
+                    return ResponseEntity.ok("User activated successfully");
+                case "deactivate":
+                    userService.deactivateUser(id);
+                    return ResponseEntity.ok("User deactivated successfully");
+                default:
+                    return ResponseEntity.badRequest().body("Invalid action");
+            }
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }

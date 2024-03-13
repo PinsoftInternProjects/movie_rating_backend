@@ -67,7 +67,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="category-table" columnName="id" columnDataType="bigint" startWith="100"
+        <addAutoIncrement tableName="category-table" columnName="id" columnDataType="bigint" startWith="1"
                           incrementBy="1"/>
     </changeSet>
     <changeSet id="20240312-movie-table" author="umut">
