@@ -9,7 +9,11 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentUpdateDto {
+public class CommentGetDto {
+    private Long id;
+    private Long movieId;
+    private Long userId;
+    private String userName;
     private String comment;
     private int rating;
     private LocalDateTime time;

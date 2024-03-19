@@ -1,6 +1,7 @@
 package com.pinsoft.project.movierating.Controller;
 
 import com.pinsoft.project.movierating.DTO.CommentAddDto;
+import com.pinsoft.project.movierating.DTO.CommentGetDto;
 import com.pinsoft.project.movierating.DTO.CommentUpdateDto;
 import com.pinsoft.project.movierating.Entity.Comment;
 import com.pinsoft.project.movierating.Service.CommentService;
@@ -23,12 +24,12 @@ public class CommentController {
     }
 
     @GetMapping("/comment")
-    public List<Comment> GetAllComments(){
+    public List<CommentGetDto> GetAllComments(){
         return commentService.GetAllComments();
     }
 
     @GetMapping("/comment/{movieId}")
-    public List<Comment> GetCommentsByMovieId(@PathVariable Long movieId){
+    public List<CommentGetDto> GetCommentsByMovieId(@PathVariable Long movieId){
         return commentService.GetCommentsByMovieId(movieId);
     }
 
@@ -37,8 +38,8 @@ public class CommentController {
         return commentService.RemoveComment(commentId);
     }
 
-    @PutMapping("/comment")
-    public boolean UpdateComment(@RequestBody CommentUpdateDto commentUpdateDto){
-        return commentService.UpdateComment(commentUpdateDto);
+    @PutMapping("/comment/{id}")
+    public boolean UpdateComment(@RequestBody CommentUpdateDto commentUpdateDto, @PathVariable Long id){
+        return commentService.UpdateComment(commentUpdateDto,id);
     }
 }
