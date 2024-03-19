@@ -1,13 +1,11 @@
 package com.pinsoft.project.movierating.Controller;
 
-import com.pinsoft.project.movierating.DTO.AuthenticationRequest;
-import com.pinsoft.project.movierating.DTO.AuthenticationResponse;
-import com.pinsoft.project.movierating.DTO.RegisterRequest;
-import com.pinsoft.project.movierating.DTO.StatusRequest;
+import com.pinsoft.project.movierating.DTO.*;
 import com.pinsoft.project.movierating.Entity.User;
 import com.pinsoft.project.movierating.Service.AuthenticationService;
 import com.pinsoft.project.movierating.Service.UserService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -83,6 +81,16 @@ public class UserController {
             }
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+    }
+
+    @PutMapping("/users/update/{id}")
+    public ResponseEntity<String> updateUser(@RequestBody UserUpdateDto userUpdateDto) {
+        try {
+            userService.updateUser(userUpdateDto);
+            return ResponseEntity.ok("User updated successfully");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }
