@@ -10,6 +10,7 @@
 /Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/Entity/Movie.java
 /Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/DTO/CommentUpdateDto.java
 /Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/Repository/CategoryRepository.java
+/Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/DTO/CommentGetDto.java
 /Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/Repository/MovieRepository.java
 /Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/Controller/CategoryController.java
 /Users/muratozatakan/Downloads/movie-rating/src/main/java/com/pinsoft/project/movierating/Service/CommentService.java

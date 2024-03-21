@@ -19,6 +19,7 @@ com/pinsoft/project/movierating/DTO/AuthenticationRequest.class
 com/pinsoft/project/movierating/Config/JwtAuthenticationFilter.class
 com/pinsoft/project/movierating/Entity/Movie.class
 com/pinsoft/project/movierating/Service/UserService.class
+com/pinsoft/project/movierating/DTO/CommentGetDto.class
 com/pinsoft/project/movierating/Repository/CommentRepository.class
 com/pinsoft/project/movierating/Service/RoleService.class
 com/pinsoft/project/movierating/DTO/MovieUpdateDto.class
